@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light dark">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tomorrow's a BIG DAY — Never Miss What Matters Most</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -459,7 +460,7 @@ footer {
     flex-direction:column;
     align-items:center;
     text-align:center;
-    padding:140px 24px 60px;
+    padding:180px 24px 60px;
     gap:0;
   }
   .hero-left {
@@ -953,6 +954,45 @@ footer {
 }
 .hero-phone-notch {
   background: #EEEEEE !important;
+}
+
+/* Force phone mockup to always display in light mode
+   regardless of device dark mode settings */
+.hero-phone-frame,
+.hero-phone-screen,
+.hps-cal-header,
+.hps-cal-grid,
+.hps-events,
+.hps-card,
+.hps-footer,
+.hps-section-label {
+  color-scheme: light only;
+  forced-color-adjust: none;
+}
+@media (prefers-color-scheme: dark) {
+  .hero-phone-frame { background:#FFFFFF !important; border-color:#E0E0E0 !important; }
+  .hero-phone-screen { background:#FFFFFF !important; }
+  .hero-phone-notch { background:#F0F0F0 !important; }
+  .hps-cal-header { background:#FFFFFF !important; }
+  .hps-cal-month { color:#000000 !important; }
+  .hps-cal-dow { color:#999999 !important; }
+  .hps-cal-d { color:#111111 !important; }
+  .hps-cal-d.today { background:#1A1A1A !important; color:#FFFFFF !important; }
+  .hps-section-label { color:#555555 !important; background:#FFFFFF !important; }
+  .hps-card { background:#FFFFFF !important; border-color:#E5E5E5 !important; }
+  .hps-card.gold { background:linear-gradient(135deg,#FFFBEA,#FFF8D6) !important; }
+  .hps-card.gift-remind { background:linear-gradient(135deg,#FFF0F8,#FFE8F0) !important; }
+  .hps-etitle { color:#000000 !important; }
+  .hps-etime { color:#555555 !important; }
+  .hps-footer { background:#F8F8F8 !important; border-color:#E8E8E8 !important; }
+  .hps-flag { color:#666666 !important; }
+  .hps-lang-btn { color:#8B6914 !important; background:#FFF8DC !important; }
+  .hps-cal-nav { color:#999999 !important; }
+  .hps-cal-year { color:#999999 !important; }
+  .hps-dot-circle { filter: none !important; }
+  .hps-badge.yearly { background:#FFF0F5 !important; color:#E91E8C !important; }
+  .hps-badge.compulsory { background:#FFF8E1 !important; color:#F59E0B !important; }
+  .hps-shop-btn { background:#FFF8DC !important; border-color:#FFD700 !important; }
 }
 </style>
 </head>
