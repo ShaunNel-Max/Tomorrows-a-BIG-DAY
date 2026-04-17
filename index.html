@@ -102,10 +102,11 @@ nav.scrolled {
 .hero-left { position:relative;z-index:1;grid-column:1;max-width:560px; }
 .hero-badge {
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.25);
-  padding:6px 18px;border-radius:100px;
-  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--yellow);margin-bottom:36px;
+  background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.6);
+  padding:8px 20px;border-radius:100px;
+  font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#FFD700;margin-bottom:36px;
+  text-shadow:0 0 20px rgba(255,215,0,.4);
 }
 .hero-badge::before { content:'★';font-size:.65rem; }
 
@@ -129,18 +130,24 @@ nav.scrolled {
 .hero-btns { display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px; }
 .btn-hero-primary {
   background:var(--yellow);color:var(--black);
-  padding:16px 38px;border-radius:100px;
-  font-size:.9rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 32px;border-radius:100px;
+  font-size:.88rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
   text-decoration:none;transition:all .2s;
   box-shadow:0 8px 32px rgba(255,215,0,.3);
+  white-space:nowrap;
+  display:inline-block;
+  text-align:center;
 }
 .btn-hero-primary:hover { transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,215,0,.45); }
 .btn-hero-ghost {
   background:rgba(255,255,255,.06);color:var(--white);
-  padding:16px 38px;border-radius:100px;
-  font-size:.9rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 32px;border-radius:100px;
+  font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
   text-decoration:none;border:1px solid rgba(255,255,255,.12);
   transition:all .2s;
+  white-space:nowrap;
+  display:inline-block;
+  text-align:center;
 }
 .btn-hero-ghost:hover { background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25); }
 
@@ -471,7 +478,7 @@ footer {
   .hero-badge { margin-bottom:20px; font-size:.68rem; }
   .hero-desc { text-align:center; max-width:100%; font-size:.92rem; line-height:1.7; }
   .hero-btns { justify-content:center; margin-bottom:32px; flex-direction:column; align-items:center; gap:12px; }
-  .btn-hero-primary, .btn-hero-ghost { width:240px; text-align:center; padding:14px 24px; }
+  .btn-hero-primary, .btn-hero-ghost { width:260px; text-align:center; padding:14px 16px; font-size:.8rem; letter-spacing:.04em; }
   .hero-stats { justify-content:center; gap:20px; flex-wrap:wrap; margin-top:32px; padding-top:28px; }
   .h-stat-num { font-size:1.9rem; }
   .h-stat-label { font-size:.65rem; }
