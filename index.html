@@ -1209,6 +1209,19 @@ footer {
   /* SECTION EYEBROW */
   .section-eyebrow { color: var(--yellow) !important; }
 }
+
+/* Fix inline grids in translation section on mobile */
+@media(max-width:900px) {
+  /* Use cases and smart features grids */
+  div[style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media(max-width:480px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1660,7 +1673,7 @@ footer {
   <!-- Real world use cases -->
   <div style="margin-bottom:0;" class="reveal d4">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;color:var(--yellow);margin-bottom:20px;">Real-World Use Cases</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;box-sizing:border-box;">
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">👰</span>
         <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Wedding planners coordinating with international guests and overseas suppliers</p>
