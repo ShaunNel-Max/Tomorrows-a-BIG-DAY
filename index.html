@@ -1109,6 +1109,106 @@ footer {
   .section-sub-light { color:rgba(255,255,255,.8) !important; }
   .section-eyebrow { color:var(--yellow) !important; }
 }
+
+/* ═══════════════════════════════════════════
+   DARK MODE OVERRIDES — Full site readability
+   Forces correct colors regardless of device dark mode
+   ═══════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+
+  /* General page */
+  body { background: var(--off-white) !important; }
+
+  /* NAV */
+  nav { background: rgba(13,13,13,.98) !important; }
+  .nav-logo-text { color: var(--white) !important; }
+  .nav-logo-text span { color: var(--yellow) !important; }
+
+  /* HERO — already dark, keep as is */
+  .hero { background: var(--black) !important; }
+  .hero h1 { color: var(--white) !important; }
+  .hero h1 .yellow { color: var(--yellow) !important; }
+  .hero-desc { color: rgba(255,255,255,.65) !important; }
+  .hero-badge { color: var(--yellow) !important; }
+  .h-stat-num { color: var(--yellow) !important; }
+  .h-stat-label { color: rgba(255,255,255,.5) !important; }
+
+  /* FEATURES — cream/white background */
+  .features { background: var(--cream) !important; }
+  .feat-card { background: var(--white) !important; }
+  .feat-card:hover { background: #F5EDD8 !important; }
+  .feat-name { color: var(--navy, #0E1628) !important; }
+  .feat-desc { color: #5a5040 !important; }
+  .section-h2 { color: var(--black) !important; }
+  .section-sub { color: #6B6550 !important; }
+
+  /* HOW IT WORKS — dark background */
+  .how { background: var(--black) !important; }
+  .step { background: var(--black) !important; }
+  .step:hover { background: #111 !important; }
+  .step-num { color: rgba(255,215,0,.4) !important; }
+  .step-title { color: #FFFFFF !important; }
+  .step-desc { color: rgba(255,255,255,.8) !important; }
+
+  /* TESTIMONIALS */
+  .testi { background: var(--black) !important; }
+  .testi-card { background: #111 !important; border-color: rgba(255,215,0,.15) !important; }
+  .testi-text { color: rgba(255,255,255,.8) !important; }
+  .testi-author { color: rgba(255,255,255,.45) !important; }
+
+  /* PRICING */
+  .pricing { background: var(--off-white) !important; }
+  .price-card { background: var(--white) !important; border-color: rgba(201,168,76,.25) !important; }
+  .price-card.featured { background: var(--black) !important; border-color: var(--yellow) !important; }
+  .price-tier { color: #6B6550 !important; }
+  .price-card.featured .price-tier { color: rgba(255,255,255,.5) !important; }
+  .price-num { color: var(--black) !important; }
+  .price-card.featured .price-num { color: var(--yellow) !important; }
+  .price-period { color: #6B6550 !important; }
+  .price-card.featured .price-period { color: rgba(255,255,255,.4) !important; }
+  .price-feats li { color: var(--black) !important; }
+  .price-card.featured .price-feats li { color: rgba(255,255,255,.8) !important; }
+
+  /* CTA — yellow background */
+  .cta { background: var(--yellow) !important; }
+  .cta-h2 { color: var(--black) !important; }
+  .cta-sub { color: rgba(0,0,0,.6) !important; }
+
+  /* FOOTER */
+  footer { background: var(--black) !important; }
+  .footer-logo-text { color: var(--white) !important; }
+  .footer-tagline { color: rgba(255,255,255,.4) !important; }
+  .footer-col h4 { color: var(--yellow) !important; }
+  .footer-col a { color: rgba(255,255,255,.4) !important; }
+  .footer-bottom { color: rgba(255,255,255,.25) !important; }
+
+  /* INLINE DARK SECTIONS — force text white */
+  section div[style*="background:var(--black)"] *,
+  section div[style*="background:#111"] * {
+    color: rgba(255,255,255,.75) !important;
+  }
+  /* But keep headings bright */
+  section div[style*="background:var(--black)"] [style*="font-family:'Bebas Neue'"],
+  section div[style*="background:#111"] [style*="font-family:'Bebas Neue'"] {
+    color: var(--white) !important;
+  }
+  /* And yellow accents */
+  section div[style*="background:var(--black)"] [style*="color:var(--yellow)"],
+  section div[style*="background:#111"] [style*="color:var(--yellow)"] {
+    color: var(--yellow) !important;
+  }
+
+  /* MARQUEE */
+  .marquee-wrap { background: var(--yellow) !important; }
+  .mq-item { color: var(--black) !important; }
+
+  /* EVENT TILES */
+  .ev-name { color: var(--white) !important; }
+  .ev-desc { color: rgba(255,255,255,.55) !important; }
+
+  /* SECTION EYEBROW */
+  .section-eyebrow { color: var(--yellow) !important; }
+}
 </style>
 </head>
 <body>
@@ -1348,14 +1448,14 @@ footer {
     <div style="background:var(--black);padding:44px 32px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
       <div style="font-size:2.2rem;margin-bottom:16px;">⏰</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--white);margin-bottom:10px;">Early Reminders</div>
-      <p style="font-size:.87rem;line-height:1.7;color:rgba(255,255,255,.75);">Multiple reminders keep you ahead of every occasion:</p>
-      <ul style="font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.7);margin-top:8px;padding-left:16px;">
-        <li><strong style="color:rgba(255,255,255,.6);">Reminder 1 — Weeks before</strong> — plenty of time to plan and buy a gift. Includes a direct link to the in-app shop 🛍️</li>
-        <li><strong style="color:rgba(255,255,255,.6);">Reminder 2 — Days before</strong> — a final nudge to sort that gift before it's too late. Also includes the in-app shop link 🛍️</li>
-        <li><strong style="color:rgba(255,255,255,.6);">The evening before</strong> — a reminder as the clock approaches midnight, so you're ready for the day ahead</li>
-        <li><strong style="color:rgba(255,255,255,.6);">On the day</strong> — triggered as the date turns over at midnight, so you wake up ready to celebrate</li>
+      <p style="font-size:.87rem;line-height:1.7;color:rgba(255,255,255,.9);">Multiple reminders keep you ahead of every occasion:</p>
+      <ul style="font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.85);margin-top:8px;padding-left:16px;">
+        <li><strong style="color:#FFFFFF !important;">Reminder 1 — Weeks before</strong> — plenty of time to plan and buy a gift. Includes a direct link to the in-app shop 🛍️</li>
+        <li><strong style="color:#FFFFFF !important;">Reminder 2 — Days before</strong> — a final nudge to sort that gift before it's too late. Also includes the in-app shop link 🛍️</li>
+        <li><strong style="color:#FFFFFF !important;">The evening before</strong> — a reminder as the clock approaches midnight, so you're ready for the day ahead</li>
+        <li><strong style="color:#FFFFFF !important;">On the day</strong> — triggered as the date turns over at midnight, so you wake up ready to celebrate</li>
       </ul>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);margin-top:10px;">Gift purchase prompts are included in Reminders 1 &amp; 2 only. The app also has a dedicated <strong style="color:rgba(0,0,0,.55);">Shop tab</strong> so you can browse and purchase gifts at any time.</p>
+      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.85);margin-top:10px;">Gift purchase prompts are included in Reminders 1 &amp; 2 only. The app also has a dedicated <strong style="color:#FFD700 !important;background:rgba(255,215,0,.15);padding:1px 6px;border-radius:3px;">Shop tab</strong> so you can browse and purchase gifts at any time.</p>
     </div>
     <div style="background:var(--black);padding:44px 32px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
       <div style="font-size:2.2rem;margin-bottom:16px;">🛍️</div>
@@ -1468,184 +1568,132 @@ footer {
   </div>
 </section>
 
-<!-- LANGUAGE COMMUNICATION SECTION -->
+<!-- TRANSLATION MESSAGING SECTION -->
 <section style="padding:100px 60px;background:var(--black);position:relative;overflow:hidden;">
   <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.07),transparent);pointer-events:none;"></div>
   <div style="position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.05),transparent);pointer-events:none;"></div>
 
-  <div class="section-eyebrow">Auto-Translation Messaging</div>
+  <div class="section-eyebrow">Built-In Translation</div>
   <h2 class="section-h2 section-h2-light reveal" style="margin-bottom:16px;">Talk to anyone,<br><span style="color:var(--yellow)">in any language.</span></h2>
-  <p class="reveal d1" style="font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,.75);max-width:620px;margin-bottom:20px;">Whether you're planning a destination wedding with relatives across three continents, organising a multicultural family reunion, or simply staying in touch with friends overseas — language should never be a barrier.</p>
-  <p class="reveal d2" style="font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,.75);max-width:620px;margin-bottom:56px;">That's why we built <strong style="color:var(--yellow);">real-time auto-translation</strong> into the heart of Tomorrow's a BIG DAY®. You write in your language. They read it in theirs. No copy-paste. No third-party tools. It just works.</p>
+  <p style="font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.75);max-width:600px;margin-bottom:60px;" class="reveal d1">Whether you're planning a destination wedding with relatives across three continents, running a business with international clients, or simply staying in touch with friends overseas — language should never be a barrier. That's why we built real-time auto-translation into the heart of Tomorrow's a BIG DAY®.</p>
 
-  <!-- Two Ways to Chat -->
+  <!-- How it works callout -->
+  <div style="background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);border-radius:4px;padding:36px 40px;margin-bottom:40px;max-width:700px;" class="reveal d2">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--yellow);margin-bottom:12px;">How It Works</div>
+    <p style="font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.8);">Every chat in the app automatically translates each message into the language each person prefers. <strong style="color:var(--white);">You write in your language. They read it in theirs.</strong> No copy-paste. No third-party tools. No awkward "let me Google Translate this real quick." It just works.</p>
+  </div>
+
+  <!-- Two ways to chat -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;" class="reveal d2">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,215,0,.2);border-radius:6px;padding:40px 36px;">
+    <div style="background:#111;border:1px solid rgba(255,215,0,.15);border-radius:4px;padding:40px 32px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.07),transparent);"></div>
       <div style="font-size:2rem;margin-bottom:16px;">💬</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--white);margin-bottom:12px;">Standalone Messages Portal</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.7);">Tap the chat icon at the top of any screen to open your private messaging hub. Start a new conversation, give it a name and share the invite link via WhatsApp or any messenger. Anyone can join with a single tap — no signup, no app install required.</p>
+      <p style="font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.75);">Tap the chat icon at the top of any screen to open your private messaging hub. Start a new conversation, give it a name, and share the invite link via WhatsApp or any messenger. Anyone can join with a single tap — no signup, no app install required.</p>
     </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,215,0,.2);border-radius:6px;padding:40px 36px;">
+    <div style="background:#111;border:1px solid rgba(255,215,0,.15);border-radius:4px;padding:40px 32px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.07),transparent);"></div>
       <div style="font-size:2rem;margin-bottom:16px;">🎉</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--white);margin-bottom:12px;">Per-Event Group Chat</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.7);">Every event you create automatically gets its own group chat. Your guests can RSVP, ask questions, share excitement and coordinate — all in their own language, all in real time.</p>
+      <p style="font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.75);">Every event you create automatically gets its own group chat. Your guests can RSVP, ask questions, share excitement and coordinate — all in their own language, all in one place.</p>
     </div>
   </div>
 
-  <!-- Languages -->
-  <div style="background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);border-radius:6px;padding:36px 40px;margin-bottom:40px;" class="reveal d3">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--yellow);margin-bottom:16px;">16 Languages Supported</div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇬🇧 English</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇫🇷 French</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇩🇪 German</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇪🇸 Spanish</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇵🇹 Portuguese</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇮🇹 Italian</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇳🇱 Dutch</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇿🇦 Afrikaans</span>
-      <span style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);padding:6px 14px;border-radius:100px;font-size:.78rem;color:var(--yellow);font-weight:700;">🇿🇦 Zulu</span>
-      <span style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);padding:6px 14px;border-radius:100px;font-size:.78rem;color:var(--yellow);font-weight:700;">🇿🇦 Xhosa</span>
-      <span style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);padding:6px 14px;border-radius:100px;font-size:.78rem;color:var(--yellow);font-weight:700;">🇿🇦 Sesotho</span>
-      <span style="background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);padding:6px 14px;border-radius:100px;font-size:.78rem;color:var(--yellow);font-weight:700;">🌍 Swahili</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇸🇦 Arabic</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇮🇳 Hindi</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇨🇳 Chinese</span>
-      <span style="background:rgba(255,255,255,.07);padding:6px 14px;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;">🇯🇵 Japanese</span>
+  <!-- 16 languages -->
+  <div style="margin-bottom:40px;" class="reveal d3">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;color:var(--yellow);margin-bottom:16px;">16 Languages Supported</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇬🇧 English</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇫🇷 French</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇩🇪 German</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇪🇸 Spanish</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇵🇹 Portuguese</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇮🇹 Italian</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇳🇱 Dutch</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇿🇦 Afrikaans</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇿🇦 Zulu</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇿🇦 Xhosa</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇿🇦 Sesotho</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🌍 Swahili</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇸🇦 Arabic</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇮🇳 Hindi</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇨🇳 Chinese</span>
+      <span style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);padding:6px 14px;border-radius:100px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);">🇯🇵 Japanese</span>
     </div>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.45);font-style:italic;">Special focus on African languages — because everyone deserves to be heard in their mother tongue.</p>
+    <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-top:12px;font-style:italic;">Special focus on African languages — because everyone deserves to be heard in their mother tongue.</p>
   </div>
 
-  <!-- Smart Features -->
+  <!-- Smart features grid -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.12);margin-bottom:40px;" class="reveal d3">
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">🔄</div>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">🔄</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Real-Time Translation</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Messages appear translated within seconds — instant, natural and accurate.</p>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Messages appear translated within seconds — conversations flow naturally without any delay.</p>
     </div>
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">👁️</div>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">👁️</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">See the Original</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Every translated message shows a language tag. Tap it to see exactly what the sender wrote.</p>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Every translated message shows a flag and language tag. Tap it to see exactly what the sender wrote.</p>
     </div>
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">🌐</div>
-      <div style="font-size:1.1rem;font-family:'Bebas Neue',sans-serif;color:var(--white);margin-bottom:8px;">Everyone Sees Their Version</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Three friends, three languages, one conversation. Each person reads in their own language automatically.</p>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">🌐</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Everyone Gets Their Version</div>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Three friends, three languages, one conversation. Each person sees messages in their own preferred language.</p>
     </div>
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">🔗</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Share With One Link</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Invite anyone to a chat room with a clean URL or memorable code. No signup, no install needed.</p>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">🔗</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Share via Link</div>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Invite anyone to a chat room with a clean URL. No signup needed — one tap and they're in.</p>
     </div>
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">🤖</div>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">🤖</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Powered by Advanced AI</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Accurate, natural-sounding translations that preserve tone, emojis and meaning.</p>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Accurate, natural-sounding translations that preserve tone, emojis and meaning — not robotic word-for-word.</p>
     </div>
-    <div style="background:var(--black);padding:32px 28px;">
-      <div style="font-size:1.5rem;margin-bottom:10px;">⚡</div>
+    <div style="background:var(--black);padding:32px 28px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
+      <div style="font-size:1.6rem;margin-bottom:10px;">⚡</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;">Cached for Speed</div>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);">Once a message is translated it's instant for everyone else in that language.</p>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;">Once a message is translated it's instant for everyone else in that language — no repeated processing.</p>
     </div>
   </div>
 
-  <!-- Real World Use Cases -->
-  <div style="margin-top:20px;" class="reveal d3">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--yellow);margin-bottom:20px;">Real-World Use Cases</div>
+  <!-- Real world use cases -->
+  <div style="margin-bottom:0;" class="reveal d4">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;color:var(--yellow);margin-bottom:20px;">Real-World Use Cases</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">👰</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Wedding planners coordinating with international guests and overseas suppliers</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Wedding planners coordinating with international guests and overseas suppliers</p>
       </div>
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">🏢</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Business owners running teams and events across multiple countries</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Business owners running teams across multiple countries</p>
       </div>
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">👨‍👩‍👧‍👦</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Diaspora families keeping grandparents and relatives back home in the loop</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Diaspora families keeping grandparents back home in the loop</p>
       </div>
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">✈️</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Travel groups chatting with locals, guides and tour operators abroad</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Travel groups chatting with locals and tour operators abroad</p>
       </div>
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">⛪</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Faith communities uniting congregations from many cultural backgrounds</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Faith communities uniting congregations from many backgrounds</p>
       </div>
-      <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:20px 24px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:20px;display:flex;align-items:flex-start;gap:12px;">
         <span style="font-size:1.4rem;flex-shrink:0;">🌐</span>
-        <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);">Anyone with a friend, relative, colleague or contact who speaks a different language</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;">Anyone with a friend, relative or colleague who speaks a different language</p>
       </div>
     </div>
   </div>
 
-  <!-- Closing Statement -->
-  <div style="margin-top:40px;padding:32px 40px;background:var(--yellow);border-radius:6px;text-align:center;" class="reveal d3">
-    <p style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:var(--black);margin-bottom:8px;">Because tomorrow's a BIG DAY for everyone,<br>in every language. 🌍✨</p>
-    <p style="font-size:.9rem;color:rgba(0,0,0,.6);">Communication is the foundation of every meaningful event. By removing the language barrier, Tomorrow's a BIG DAY® doesn't just help you organise — it helps you connect.</p>
+  <!-- Closing statement -->
+  <div style="margin-top:48px;padding:32px 40px;background:var(--yellow);border-radius:4px;text-align:center;" class="reveal d4">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--black);margin-bottom:8px;">Because tomorrow's a BIG DAY for everyone,<br>in every language. 🌍✨</div>
+    <p style="font-size:.9rem;color:rgba(0,0,0,.6);">Communication is the foundation of every meaningful event, every relationship, every milestone worth celebrating.</p>
   </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section class="testi">
-  <div class="section-eyebrow">What People Say</div>
-  <h2 class="section-h2 section-h2-light reveal">Loved by those<br>who <span style="color:var(--yellow)">celebrate</span></h2>
-  <div class="testi-grid">
-    <div class="testi-card reveal"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">I used to forget my own mother's birthday every other year. Now I get a reminder three days out, one day out, and on the morning. Genuinely life-changing.</p><div class="testi-author">Sarah M. — Sydney, Australia</div></div>
-    <div class="testi-card reveal d1"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">We run a local football club and the fixtures feature alone is worth every cent. Parents always know where to be and when. No more group chat chaos.</p><div class="testi-author">Dave R. — Club Secretary</div></div>
-    <div class="testi-card reveal d2"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">As a work milestones manager, work anniversaries used to slip through constantly. Now our team feel genuinely celebrated. The morale improvement has been noticeable.</p><div class="testi-author">Priya K. — People Manager</div></div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-eyebrow">Simple Pricing</div>
-  <h2 class="section-h2 reveal">Choose your <span class="yel">plan</span></h2>
-  <p class="section-sub reveal d1">Start free, upgrade when you're ready. No hidden fees.</p>
-  <div class="pricing-grid">
-    <div class="price-card reveal">
-      <div class="price-tier">Free Trial</div>
-      <div class="price-num">$0</div>
-      <div class="price-period">Forever free, core features</div>
-      <ul class="price-feats">
-        <li>Up to 10 events</li>
-        <li>Basic push reminders</li>
-        <li>iOS & Android app</li>
-        <li>Personal calendar view</li>
-      </ul>
-      <a href="#cta" class="pbtn pbtn-outline">Get Started Free</a>
-    </div>
-    <div class="price-card featured reveal d1">
-      <div class="price-popular">Most Popular</div>
-      <div class="price-tier">Annual</div>
-      <div class="price-num">$25</div>
-      <div class="price-period">per year — just $2.08/month</div>
-      <ul class="price-feats">
-        <li>Unlimited events</li>
-        <li>Advanced smart reminders</li>
-        <li>Invites & RSVP tracking</li>
-        <li>Sports fixtures module</li>
-        <li>Work milestone tools</li>
-        <li>Web app access</li>
-      </ul>
-      <a href="#cta" class="pbtn pbtn-yellow">Start Annual Plan</a>
-    </div>
-    <div class="price-card reveal d2">
-      <div class="price-tier">Lifetime</div>
-      <div class="price-num">$150</div>
-      <div class="price-period">one-time, yours forever</div>
-      <ul class="price-feats">
-        <li>Everything in Annual</li>
-        <li>Lifetime access, no renewals</li>
-        <li>Priority customer support</li>
-        <li>Early access to new features</li>
-        <li>Founder badge in-app</li>
-      </ul>
-      <a href="#cta" class="pbtn pbtn-outline">Buy Lifetime Access</a>
-    </div>
-  </div>
 </section>
 
 <!-- CTA -->
