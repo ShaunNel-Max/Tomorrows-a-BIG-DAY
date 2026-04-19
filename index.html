@@ -971,7 +971,93 @@ footer {
   forced-color-adjust: none;
 }
 @media (prefers-color-scheme: dark) {
-  .hero-phone-frame { background:#FFFFFF !important; border-color:#E0E0E0 !important; }
+
+  /* ── GLOBAL TEXT OVERRIDES ── */
+  body { background: var(--off-white) !important; color: var(--text-dark) !important; }
+
+  /* ── SECTIONS WITH DARK BACKGROUNDS — keep them dark but fix text ── */
+  .hero { background: var(--black) !important; }
+  .how { background: #0D0D0D !important; }
+  .testi { background: var(--black) !important; }
+  .cta { background: var(--yellow) !important; }
+  footer { background: var(--black) !important; }
+
+  /* ── STEP TEXT ── */
+  .step { background: #0D0D0D !important; }
+  .step-num { color: rgba(255,215,0,.5) !important; }
+  .step-title { color: #FFFFFF !important; }
+  .step-desc { color: rgba(255,255,255,.8) !important; }
+
+  /* ── INLINE DARK SECTION CARDS (gift panic, expat, registry) ── */
+  /* Force all inline-styled dark cards to have visible text */
+  section div[style*="background:var(--black)"] p,
+  section div[style*="background:var(--black)"] ul,
+  section div[style*="background:var(--black)"] li,
+  section div[style*="background:var(--black)"] div { 
+    color: rgba(255,255,255,.8) !important; 
+  }
+  section div[style*="background:var(--black)"] strong {
+    color: #FFFFFF !important;
+  }
+
+  /* Gift panic section cards specifically */
+  .how .step-desc,
+  section p[style*="color:rgba(0,0,0"],
+  section p[style*="color:rgba(255,255,255,.4)"],
+  section ul[style*="color:rgba(255,255,255,.35)"],
+  section ul[style*="color:rgba(0,0,0"] {
+    color: rgba(255,255,255,.82) !important;
+  }
+
+  /* ── ALL LIST ITEMS IN DARK SECTIONS ── */
+  .how li, section li { color: rgba(255,255,255,.8) !important; }
+  section li strong { color: #FFFFFF !important; }
+
+  /* ── REGISTRY SECTION CHECKLIST ITEMS ── */
+  section div[style*="color:rgba(255,255,255,.5)"] {
+    color: rgba(255,255,255,.82) !important;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testi-card { background: #111 !important; border-color: rgba(255,215,0,.15) !important; }
+  .testi-text { color: rgba(255,255,255,.8) !important; }
+  .testi-author { color: rgba(255,255,255,.5) !important; }
+
+  /* ── FEATURES (light bg sections) ── */
+  .features { background: var(--off-white) !important; }
+  .feat-card { background: #FFFFFF !important; }
+  .feat-card:hover { background: var(--yellow) !important; }
+  .feat-name { color: var(--black) !important; }
+  .feat-desc { color: var(--text-muted) !important; }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--off-white) !important; }
+  .price-card { background: #FFFFFF !important; border-color: rgba(255,215,0,.3) !important; }
+  .price-card.featured { background: var(--black) !important; }
+  .price-tier, .price-period { color: var(--text-muted) !important; }
+  .price-num { color: var(--black) !important; }
+  .price-card.featured .price-num { color: var(--yellow) !important; }
+  .price-feats li { color: var(--text-dark) !important; }
+  .price-card.featured .price-feats li { color: rgba(255,255,255,.8) !important; }
+
+  /* ── EVENT TYPES ── */
+  .event-types { background: var(--grey-light) !important; }
+  .ev-tile { background: var(--black) !important; }
+  .ev-name { color: #FFFFFF !important; }
+  .ev-desc { color: rgba(255,255,255,.6) !important; }
+
+  /* ── SECTION HEADINGS ON LIGHT BG ── */
+  .section-h2 { color: var(--black) !important; }
+  .section-h2-light { color: #FFFFFF !important; }
+  .section-sub { color: var(--text-muted) !important; }
+  .section-sub-light { color: rgba(255,255,255,.82) !important; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap { background: var(--yellow) !important; }
+  .mq-item { color: var(--black) !important; }
+
+  /* ── PHONE MOCKUP — always light ── */
+  .hero-phone-frame { background:#FFFFFF !important; border-color:#E0E0E0 !important; box-shadow: 0 0 0 8px #FFFFFF, 0 0 0 12px rgba(255,215,0,0.5), 0 40px 80px rgba(0,0,0,.5) !important; }
   .hero-phone-screen { background:#FFFFFF !important; }
   .hero-phone-notch { background:#F0F0F0 !important; }
   .hps-cal-header { background:#FFFFFF !important; }
@@ -988,12 +1074,27 @@ footer {
   .hps-footer { background:#F8F8F8 !important; border-color:#E8E8E8 !important; }
   .hps-flag { color:#666666 !important; }
   .hps-lang-btn { color:#8B6914 !important; background:#FFF8DC !important; }
-  .hps-cal-nav { color:#999999 !important; }
-  .hps-cal-year { color:#999999 !important; }
-  .hps-dot-circle { filter: none !important; }
-  .hps-badge.yearly { background:#FFF0F5 !important; color:#E91E8C !important; }
-  .hps-badge.compulsory { background:#FFF8E1 !important; color:#F59E0B !important; }
-  .hps-shop-btn { background:#FFF8DC !important; border-color:#FFD700 !important; }
+
+  /* ── CTA SECTION ── */
+  .cta-h2 { color: var(--black) !important; }
+  .cta-sub { color: rgba(0,0,0,.6) !important; }
+  .cta-fine { color: rgba(0,0,0,.45) !important; }
+  .dl-btn { background: var(--black) !important; }
+  .dl-btn-main { color: #FFFFFF !important; }
+
+  /* ── FOOTER ── */
+  .footer-logo-text { color: #FFFFFF !important; }
+  .footer-tagline { color: rgba(255,255,255,.45) !important; }
+  .footer-col h4 { color: var(--yellow) !important; }
+  .footer-col a { color: rgba(255,255,255,.45) !important; }
+  .footer-bottom { color: rgba(255,255,255,.3) !important; }
+
+  /* ── NAV ── */
+  nav { background: rgba(13,13,13,.98) !important; }
+  .nav-logo-text { color: #FFFFFF !important; }
+
+  /* ── LIGHT BACKGROUND SECTIONS ── */
+  .features, .pricing, .event-types, .testimonials { background: var(--off-white) !important; }
 }
 
 /* Force How It Works section to always be visible regardless of dark mode */
@@ -1307,18 +1408,18 @@ footer {
       <div style="position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.07),transparent);"></div>
       <div style="font-size:2.4rem;margin-bottom:20px;">🎁</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--white);margin-bottom:12px;">For Hosts</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.45);margin-bottom:20px;">Create and attach a gift registry directly to your event invite in seconds. Add as many items as you like — guests see the full list when they open the invite. As gifts are purchased, they are automatically removed from the registry in real time.</p>
+      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:20px;">Create and attach a gift registry directly to your event invite in seconds. Add as many items as you like — guests see the full list when they open the invite. As gifts are purchased, they are automatically removed from the registry in real time.</p>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Add gifts directly inside the invite
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Items auto-removed once purchased
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> No duplicate gifts — ever
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Works for birthdays, baby showers, weddings &amp; milestones
         </div>
       </div>
@@ -1328,18 +1429,18 @@ footer {
       <div style="position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.07),transparent);"></div>
       <div style="font-size:2.4rem;margin-bottom:20px;">🛍️</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--white);margin-bottom:12px;">For Guests</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.45);margin-bottom:20px;">Open the invite, browse the registry and purchase directly through the app. Once you buy a gift, it disappears from the list for all other guests instantly — so there is never any confusion about who is buying what.</p>
+      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:20px;">Open the invite, browse the registry and purchase directly through the app. Once you buy a gift, it disappears from the list for all other guests instantly — so there is never any confusion about who is buying what.</p>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Browse the registry inside the invite
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Purchase in-app with one tap
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Gift removed from list the moment it's bought
         </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(0,0,0,.55);">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);">
           <span style="color:var(--yellow);">✓</span> Always know exactly what's still available
         </div>
       </div>
@@ -1349,7 +1450,7 @@ footer {
 
   <div style="margin-top:28px;padding:28px 40px;background:var(--yellow);border-radius:4px;display:flex;align-items:center;gap:20px;" class="reveal d3">
     <div style="font-size:2rem;flex-shrink:0;">✨</div>
-    <p style="font-size:.95rem;color:var(--black);line-height:1.7;font-weight:600;">Perfect for birthdays · Baby showers · Weddings · Engagements · Milestone celebrations · Housewarming parties</p>
+    <p style="font-size:.95rem;color:var(--black);line-height:1.7;font-weight:700;">Perfect for birthdays · Baby showers · Weddings · Engagements · Milestone celebrations · Housewarming parties</p>
   </div>
 </section>
 
