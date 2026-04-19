@@ -216,7 +216,7 @@ nav.scrolled {
 .section-h2 .yel { color:var(--yellow-dark); }
 .section-h2-light { color:var(--white); }
 .section-sub { font-size:1rem;line-height:1.75;color:var(--text-muted);max-width:480px;margin-bottom:60px; }
-.section-sub-light { color:rgba(255,255,255,.45); }
+.section-sub-light { color:rgba(255,255,255,.8); }
 
 /* FEATURES */
 .features { padding:120px 60px;background:var(--off-white); }
@@ -263,13 +263,13 @@ nav.scrolled {
 .step-num {
   font-family:'Bebas Neue',sans-serif;
   font-size:5rem;line-height:1;
-  color:rgba(255,215,0,.12);
+  color:rgba(255,215,0,.35);
   margin-bottom:16px;
   transition:color .3s;
 }
 .step:hover .step-num { color:rgba(255,215,0,.35); }
-.step-title { font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--white);margin-bottom:10px; }
-.step-desc { font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.35); }
+.step-title { font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:#FFFFFF;margin-bottom:10px; }
+.step-desc { font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.75); }
 .step-line {
   position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--yellow),transparent);
@@ -447,7 +447,7 @@ footer {
 @media(max-width:900px){
 
   /* ── NAV ── */
-  nav { padding:14px 20px; background:rgba(13,13,13,.98); height:72px; }
+  nav { padding:14px 20px; background:rgba(13,13,13,.98); }
   nav.scrolled { padding:12px 20px; }
   .nav-links { display:none; }
   .nav-logo img { width:56px; height:56px; }
@@ -460,7 +460,7 @@ footer {
     flex-direction:column;
     align-items:center;
     text-align:center;
-    padding:220px 24px 60px;
+    padding:100px 24px 60px;
     gap:0;
   }
   .hero-left {
@@ -469,6 +469,7 @@ footer {
     display:flex;
     flex-direction:column;
     align-items:center;
+    padding-top:80px;
   }
   .hero h1 {
     font-size:clamp(2.8rem,11vw,4.5rem);
@@ -994,6 +995,19 @@ footer {
   .hps-badge.compulsory { background:#FFF8E1 !important; color:#F59E0B !important; }
   .hps-shop-btn { background:#FFF8DC !important; border-color:#FFD700 !important; }
 }
+
+/* Force How It Works section to always be visible regardless of dark mode */
+@media (prefers-color-scheme: dark) {
+  .how { background:#0D0D0D !important; }
+  .step { background:#0D0D0D !important; }
+  .step-num { color:rgba(255,215,0,.5) !important; }
+  .step-title { color:#FFFFFF !important; }
+  .step-desc { color:rgba(255,255,255,.75) !important; }
+  .steps { background:rgba(255,215,0,.15) !important; }
+  .section-h2-light { color:#FFFFFF !important; }
+  .section-sub-light { color:rgba(255,255,255,.8) !important; }
+  .section-eyebrow { color:var(--yellow) !important; }
+}
 </style>
 </head>
 <body>
@@ -1125,12 +1139,12 @@ footer {
   <div class="marquee-track">
     <div class="mq-item">Smart Reminders</div><div class="mq-item">Birthday Tracking</div>
     <div class="mq-item">Wedding Countdowns</div><div class="mq-item">Sports Fixtures</div>
-    <div class="mq-item">RSVP Management</div><div class="mq-item">HR Milestones</div>
+    <div class="mq-item">RSVP Management</div><div class="mq-item">Work Milestones</div>
     <div class="mq-item">Family Events</div><div class="mq-item">Push Notifications</div>
     <div class="mq-item">Shared Calendars</div><div class="mq-item">Cross-Platform Sync</div>
     <div class="mq-item">Smart Reminders</div><div class="mq-item">Birthday Tracking</div>
     <div class="mq-item">Wedding Countdowns</div><div class="mq-item">Sports Fixtures</div>
-    <div class="mq-item">RSVP Management</div><div class="mq-item">HR Milestones</div>
+    <div class="mq-item">RSVP Management</div><div class="mq-item">Work Milestones</div>
     <div class="mq-item">Family Events</div><div class="mq-item">Push Notifications</div>
     <div class="mq-item">Shared Calendars</div><div class="mq-item">Cross-Platform Sync</div>
   </div>
@@ -1164,7 +1178,7 @@ footer {
     <div class="feat-card reveal d1"><span class="feat-icon">⚽</span><div class="feat-name">Sports & Fixtures</div><p class="feat-desc">Add team schedules, match days and fixtures so no one misses a game. Coaches can push notifications directly through the portal — kit reminders, venue changes, warm-up times, travel instructions and more. One seamless app for the whole squad.</p></div>
     <div class="feat-card reveal d1"><span class="feat-icon">🌏</span><div class="feat-name">Multi-Country Calendars</div><p class="feat-desc">Select up to 3 country calendars at once. Each includes public holidays, religious events, cultural celebrations and national observances. Toggle between them instantly at the bottom of your screen — perfect for ex-pats.</p></div>
     <div class="feat-card reveal d2"><span class="feat-icon">🗣️</span><div class="feat-name">Your Language, Your Way</div><p class="feat-desc">Select your country's home language automatically, or choose your own. Every part of the app — reminders, labels, notifications — switches to your chosen language instantly.</p></div>
-    <div class="feat-card reveal d2"><span class="feat-icon">🏆</span><div class="feat-name">HR & Milestones</div><p class="feat-desc">Work anniversaries, reviews, award ceremonies — keep your team feeling remembered and valued.</p></div>
+    <div class="feat-card reveal d2"><span class="feat-icon">🏆</span><div class="feat-name">Work & Milestones</div><p class="feat-desc">Work anniversaries, reviews, award ceremonies — keep your team feeling remembered and valued.</p></div>
     <div class="feat-card reveal d1"><span class="feat-icon">📋</span><div class="feat-name">Gift Registry</div><p class="feat-desc">Event hosts can log a gift registry directly into the invite — perfect for birthdays, baby showers and milestone celebrations. As guests purchase gifts, they are automatically removed from the registry so no gift is ever doubled up. Simple, smart and stress-free for everyone.</p></div>
     <div class="feat-card reveal" style="grid-column:1/-1;background:var(--yellow);border-top:2px solid var(--black);">
       <span class="feat-icon">🎁</span>
@@ -1233,24 +1247,24 @@ footer {
     <div style="background:var(--black);padding:44px 32px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
       <div style="font-size:2.2rem;margin-bottom:16px;">⏰</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--white);margin-bottom:10px;">Early Reminders</div>
-      <p style="font-size:.87rem;line-height:1.7;color:rgba(0,0,0,.5);">Multiple reminders keep you ahead of every occasion:</p>
-      <ul style="font-size:.82rem;line-height:1.9;color:rgba(0,0,0,.45);margin-top:8px;padding-left:16px;">
+      <p style="font-size:.87rem;line-height:1.7;color:rgba(255,255,255,.75);">Multiple reminders keep you ahead of every occasion:</p>
+      <ul style="font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.7);margin-top:8px;padding-left:16px;">
         <li><strong style="color:rgba(255,255,255,.6);">Reminder 1 — Weeks before</strong> — plenty of time to plan and buy a gift. Includes a direct link to the in-app shop 🛍️</li>
         <li><strong style="color:rgba(255,255,255,.6);">Reminder 2 — Days before</strong> — a final nudge to sort that gift before it's too late. Also includes the in-app shop link 🛍️</li>
         <li><strong style="color:rgba(255,255,255,.6);">The evening before</strong> — a reminder as the clock approaches midnight, so you're ready for the day ahead</li>
         <li><strong style="color:rgba(255,255,255,.6);">On the day</strong> — triggered as the date turns over at midnight, so you wake up ready to celebrate</li>
       </ul>
-      <p style="font-size:.82rem;line-height:1.7;color:rgba(0,0,0,.45);margin-top:10px;">Gift purchase prompts are included in Reminders 1 &amp; 2 only. The app also has a dedicated <strong style="color:rgba(0,0,0,.55);">Shop tab</strong> so you can browse and purchase gifts at any time.</p>
+      <p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.65);margin-top:10px;">Gift purchase prompts are included in Reminders 1 &amp; 2 only. The app also has a dedicated <strong style="color:rgba(0,0,0,.55);">Shop tab</strong> so you can browse and purchase gifts at any time.</p>
     </div>
     <div style="background:var(--black);padding:44px 32px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
       <div style="font-size:2.2rem;margin-bottom:16px;">🛍️</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--white);margin-bottom:10px;">Shop With Intention</div>
-      <p style="font-size:.87rem;line-height:1.7;color:rgba(0,0,0,.5);">Browse and purchase gifts directly inside the app. No tab-switching, no forgetting. Both your 1st and 2nd reminders include a one-tap link straight to the gift store.</p>
+      <p style="font-size:.87rem;line-height:1.7;color:rgba(255,255,255,.75);">Browse and purchase gifts directly inside the app. No tab-switching, no forgetting. Both your 1st and 2nd reminders include a one-tap link straight to the gift store.</p>
     </div>
     <div style="background:var(--black);padding:44px 32px;border-top:3px solid transparent;transition:border-color .3s;" onmouseenter="this.style.borderColor='var(--yellow)'" onmouseleave="this.style.borderColor='transparent'">
       <div style="font-size:2.2rem;margin-bottom:16px;">😌</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:var(--white);margin-bottom:10px;">Total Peace of Mind</div>
-      <p style="font-size:.87rem;line-height:1.7;color:rgba(0,0,0,.5);">Never again forget a gift, miss a deadline or arrive empty-handed. The app has your back — every single time.</p>
+      <p style="font-size:.87rem;line-height:1.7;color:rgba(255,255,255,.75);">Never again forget a gift, miss a deadline or arrive empty-handed. The app has your back — every single time.</p>
     </div>
   </div>
   <div style="margin-top:48px;padding:32px 40px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);border-radius:4px;display:flex;align-items:center;gap:24px;" class="reveal d3">
@@ -1348,7 +1362,7 @@ footer {
     <div class="ev-tile big reveal"><div class="ev-tile-glow"></div><div class="ev-emoji">🎂</div><div class="ev-name">Birthdays & Anniversaries</div><div class="ev-desc">Never forget the people who matter most. Get reminded with plenty of time to celebrate properly.</div></div>
     <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">💍</div><div class="ev-name">Weddings & Celebrations</div><div class="ev-desc">Countdowns, RSVP tracking and guest reminders in one place.</div></div>
     <div class="ev-tile reveal d2"><div class="ev-tile-glow"></div><div class="ev-emoji">⚽</div><div class="ev-name">Sports & Fixtures</div><div class="ev-desc">Full season schedule in your pocket. Coaches push notifications to the whole squad — kit colour, venue, travel details and more.</div></div>
-    <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">🏢</div><div class="ev-name">Work & HR Milestones</div><div class="ev-desc">Anniversaries, reviews and recognition — automated and always on time.</div></div>
+    <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">🏢</div><div class="ev-name">Work Milestones</div><div class="ev-desc">Anniversaries, reviews and recognition — automated and always on time.</div></div>
     <div class="ev-tile reveal d2"><div class="ev-tile-glow"></div><div class="ev-emoji">🎓</div><div class="ev-name">Graduations & Events</div><div class="ev-desc">The moments worth planning for, tracked with care.</div></div>
   </div>
 </section>
@@ -1360,7 +1374,7 @@ footer {
   <div class="testi-grid">
     <div class="testi-card reveal"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">I used to forget my own mother's birthday every other year. Now I get a reminder three days out, one day out, and on the morning. Genuinely life-changing.</p><div class="testi-author">Sarah M. — Sydney, Australia</div></div>
     <div class="testi-card reveal d1"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">We run a local football club and the fixtures feature alone is worth every cent. Parents always know where to be and when. No more group chat chaos.</p><div class="testi-author">Dave R. — Club Secretary</div></div>
-    <div class="testi-card reveal d2"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">As an HR manager, work anniversaries used to slip through constantly. Now our team feel genuinely celebrated. The morale improvement has been noticeable.</p><div class="testi-author">Priya K. — HR Manager</div></div>
+    <div class="testi-card reveal d2"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">As a work milestones manager, work anniversaries used to slip through constantly. Now our team feel genuinely celebrated. The morale improvement has been noticeable.</p><div class="testi-author">Priya K. — People Manager</div></div>
   </div>
 </section>
 
@@ -1392,7 +1406,7 @@ footer {
         <li>Advanced smart reminders</li>
         <li>Invites & RSVP tracking</li>
         <li>Sports fixtures module</li>
-        <li>HR milestone tools</li>
+        <li>Work milestone tools</li>
         <li>Web app access</li>
       </ul>
       <a href="#cta" class="pbtn pbtn-yellow">Start Annual Plan</a>
