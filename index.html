@@ -108,8 +108,9 @@ nav.scrolled {
 .hero h1 .yellow { color:var(--yellow); display:block; }
 .hero-tagline {
   font-family:'Bebas Neue',sans-serif;
-  font-size:1.5rem;font-weight:400;
-  color:rgba(255,215,0,.75);
+  font-size:1.3rem;font-weight:400;
+  color:#FFFFFF;
+  text-shadow: 0 0 8px rgba(255,215,0,1), 0 0 18px rgba(255,215,0,.8), 0 0 32px rgba(255,215,0,.5);
   letter-spacing:.12em;text-transform:uppercase;
   margin-bottom:36px;
   border-left:4px solid var(--yellow);
@@ -374,6 +375,9 @@ nav.scrolled {
   line-height:.95;letter-spacing:.02em;
   color:var(--black);margin-bottom:16px;
   position:relative;z-index:1;
+  text-shadow:
+    0 0 12px rgba(255,215,0,.8),
+    0 0 28px rgba(255,215,0,.5);
 }
 .cta-sub { font-size:1.05rem;color:rgba(0,0,0,.55);max-width:440px;margin:0 auto 48px;line-height:1.7;position:relative;z-index:1; }
 .dl-btns { display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;position:relative;z-index:1; }
@@ -1047,6 +1051,78 @@ footer {
   .nav-logo-sub { font-size: .52rem; }
   .nav-logo img { width: 38px !important; height: 38px !important; }
 }
+
+/* ═══════════════════════════════════════
+   TAGLINE GLOW STYLE — consistent everywhere
+   Dark mode: white text + yellow glow
+   Light mode: black text + yellow glow
+   ═══════════════════════════════════════ */
+.tagline-glow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow:
+    0 0 8px rgba(255,215,0,1),
+    0 0 18px rgba(255,215,0,.8),
+    0 0 32px rgba(255,215,0,.5);
+  font-weight: 400;
+}
+@media (prefers-color-scheme: light) {
+  .tagline-glow {
+    color: #1A1A1A;
+    text-shadow:
+      0 0 8px rgba(255,215,0,1),
+      0 0 18px rgba(255,215,0,.9),
+      0 0 32px rgba(255,215,0,.6);
+  }
+}
+
+/* H1 Never miss glow */
+.hero h1 .yellow {
+  color: #FFD700;
+  text-shadow:
+    0 0 10px rgba(255,215,0,1),
+    0 0 24px rgba(255,215,0,.8),
+    0 0 40px rgba(255,215,0,.5);
+}
+/* H1 "what matters most" — white with yellow glow on dark bg */
+.hero h1 {
+  text-shadow:
+    0 0 20px rgba(255,215,0,.15);
+}
+
+/* Nav BIG DAY yellow with black border */
+.nav-logo-yellow {
+  color: #FFD700 !important;
+  -webkit-text-stroke: 1.5px #000000;
+  text-stroke: 1.5px #000000;
+  paint-order: stroke fill;
+}
+
+/* Nav subtitle glow */
+.nav-logo-sub {
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  text-shadow:
+    0 0 6px rgba(255,215,0,.9),
+    0 0 12px rgba(255,215,0,.6);
+}
+
+/* Footer tagline glow */
+.footer-tagline {
+  font-size: .88rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: rgba(255,255,255,.85) !important;
+  text-shadow:
+    0 0 8px rgba(255,215,0,.7),
+    0 0 16px rgba(255,215,0,.4);
+}
 </style>
 </head>
 <body>
@@ -1080,7 +1156,7 @@ footer {
   <div class="hero-left">
     <div class="hero-badge">Now on iOS · Android · Web</div>
     <h1>
-      <span class="yellow">Never miss</span> what matters most.
+      <span class="yellow">Never miss</span><br><span class="tagline-glow" style="font-size:clamp(3rem,6vw,6rem);letter-spacing:.02em;">what matters most.</span>
     </h1>
     <p class="hero-desc">Birthdays. Weddings. Fixtures. Milestones. Tomorrow's a BIG DAY keeps every important moment front of mind — with smart reminders that actually work.</p>
     <div class="hero-btns">
