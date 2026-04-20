@@ -105,7 +105,7 @@ nav.scrolled {
 .hero-badge::before { content:'★';font-size:.65rem; }
 
 
-.hero h1 .yellow { color:var(--yellow); display:block; }
+.hero h1 .yellow { color:var(--yellow); }
 .hero-tagline {
   font-family:'Bebas Neue',sans-serif;
   font-size:1.3rem;font-weight:700;
@@ -778,7 +778,7 @@ footer {
 .hero h1 {
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(4rem,7vw,7rem);
-  line-height:.9;letter-spacing:.02em;
+  line-height:.95;letter-spacing:.02em;
   color:var(--white);margin-bottom:28px;
 }
 
@@ -1137,10 +1137,14 @@ footer {
 /* H1 bottom line — same glow as Never miss */
 .h1-bottom {
   color: #FFFFFF;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
   text-shadow:
-    0 0 10px rgba(255,215,0,1),
-    0 0 24px rgba(255,215,0,.8),
-    0 0 40px rgba(255,215,0,.5);
+    0 0 10px rgba(255,215,0,.8),
+    0 0 24px rgba(255,215,0,.5),
+    0 0 40px rgba(255,215,0,.3);
 }
 /* Footer logo pill — matches nav pill */
 .footer-logo-pill {
@@ -1272,7 +1276,7 @@ footer {
   <div class="hero-left">
     <div class="hero-badge">Now on iOS · Android · Web</div>
     <h1>
-      <span class="yellow">Never miss</span><br><span class="h1-bottom tagline-glow">what matters most.</span>
+      <span class="yellow">Never miss</span><span class="h1-bottom"> what matters most.</span>
     </h1>
     <p class="hero-desc">Birthdays. Weddings. Fixtures. Milestones. Tomorrow's a BIG DAY keeps every important moment front of mind — with smart reminders that actually work.</p>
     <div class="hero-btns">
