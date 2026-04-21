@@ -60,9 +60,11 @@ nav.scrolled {
 .nav-links a:hover { color:var(--yellow); }
 .nav-cta {
   background:var(--yellow);color:var(--black);
-  padding:10px 26px;border-radius:100px;
-  font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:10px 20px;border-radius:100px;
+  font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
   text-decoration:none;transition:all .2s;
+  white-space:nowrap;
+  flex-shrink:0;
   box-shadow:0 0 0 0 rgba(255,215,0,.4);
 }
 .nav-cta:hover { background:var(--yellow-bright);box-shadow:0 0 0 8px rgba(255,215,0,.15); }
@@ -1003,9 +1005,9 @@ footer {
   gap: 10px;
   background: #FFFFFF;
   border-radius: 14px;
-  padding: 8px 16px 8px 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.25);
-  border: 1.5px solid rgba(0,0,0,.08);
+  padding: 8px 16px 8px 6px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.2);
+  border: none;
 }
 .nav-logo-text-wrap {
   display: flex;
@@ -1027,14 +1029,14 @@ footer {
 }
 .nav-logo-bigday {
   font-family: Arial Black, Arial, sans-serif;
-  font-size: 1.18rem;
+  font-size: 1.22rem;
   font-weight: 900;
   color: #FFD700;
-  -webkit-text-stroke: 1.5px #000000;
-  text-stroke: 1.5px #000000;
+  -webkit-text-stroke: 2.5px #000000;
+  text-stroke: 2.5px #000000;
   paint-order: stroke fill;
-  font-style: italic;
-  letter-spacing: -.01em;
+  font-style: normal;
+  letter-spacing: .01em;
 }
 .nav-logo-yellow {
   color: #FFD700;
@@ -1159,10 +1161,6 @@ footer {
   font-family: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
-  text-shadow:
-    0 0 10px rgba(255,215,0,.8),
-    0 0 24px rgba(255,215,0,.5),
-    0 0 40px rgba(255,215,0,.3);
 }
 /* Footer logo pill — matches nav pill */
 .footer-logo-pill {
@@ -1171,18 +1169,19 @@ footer {
   gap: 10px;
   background: #FFFFFF;
   border-radius: 14px;
-  padding: 6px 14px 6px 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.4);
-  border: 1.5px solid rgba(0,0,0,.1);
+  padding: 8px 16px 8px 6px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.2);
+  border: none;
   text-decoration: none;
   margin-bottom: 16px;
   width: fit-content;
 }
 .footer-logo-pill img {
-  width: 40px;
-  height: 40px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 .footer-logo-text-wrap {
   display: flex;
@@ -1194,19 +1193,31 @@ footer {
   font-size: .88rem;
   font-weight: 800;
   color: #1A1A1A;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  white-space: nowrap;
+  line-height: 1.15;
 }
 .footer-logo-yellow {
   color: #FFD700;
   font-style: normal;
-  -webkit-text-stroke: 1px #000;
+  -webkit-text-stroke: 2.5px #000000;
+  text-stroke: 2.5px #000000;
   paint-order: stroke fill;
+  font-size: 1.22rem;
+  font-family: Arial Black, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: .01em;
 }
 .footer-logo-sub {
-  font-size: .52rem;
-  font-weight: 700;
-  letter-spacing: .06em;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .07em;
   text-transform: uppercase;
   color: #1A1A1A;
+  line-height: 1;
+  font-style: normal;
   text-shadow:
     0 0 5px rgba(255,215,0,1),
     0 0 12px rgba(255,215,0,.7),
@@ -1283,6 +1294,15 @@ body.light-mode footer { background: #1A1A1A !important; }
 body.light-mode nav { background: rgba(255,255,255,.95) !important; border-bottom: 1px solid rgba(0,0,0,.1); }
 body.light-mode .nav-links a { color: #333 !important; }
 body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
+
+@media(max-width:900px) {
+  .nav-logo img { width:44px !important; height:44px !important; }
+  .nav-logo-bigday { font-size:1.05rem !important; }
+  .nav-logo-main { font-size:.78rem !important; }
+  .nav-logo-sub { font-size:.5rem !important; }
+  .nav-logo-pill { padding:6px 12px 6px 5px !important; }
+  .nav-cta { padding:8px 14px !important; font-size:.72rem !important; }
+}
 </style>
 </head>
 <body>
