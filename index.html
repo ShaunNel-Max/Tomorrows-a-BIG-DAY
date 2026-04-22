@@ -1303,97 +1303,6 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
   .nav-logo-pill { padding:6px 12px 6px 5px !important; }
   .nav-cta { padding:8px 14px !important; font-size:.72rem !important; }
 }
-
-/* ════════════════════════════════════════
-   MOBILE NAV FIX — added cleanly
-   ════════════════════════════════════════ */
-@media(max-width:900px) {
-
-  /* Nav: single row, everything fits */
-  nav {
-    padding: 8px 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-    background: rgba(13,13,13,.97) !important;
-  }
-
-  /* Hide nav links and theme toggle to save space */
-  .nav-links { display: none !important; }
-  #themeToggle { display: none !important; }
-
-  /* Compact logo pill */
-  .nav-logo-pill {
-    padding: 4px 8px 4px 4px !important;
-    border-radius: 10px !important;
-    gap: 5px !important;
-    background: #FFFFFF !important;
-  }
-  .nav-logo img {
-    width: 36px !important;
-    height: 36px !important;
-    flex-shrink: 0 !important;
-  }
-  .nav-logo-main {
-    font-size: .72rem !important;
-    white-space: nowrap !important;
-    color: #1A1A1A !important;
-  }
-  .nav-logo-bigday {
-    font-size: .95rem !important;
-    color: #FFD700 !important;
-    -webkit-text-stroke: 2px #000 !important;
-  }
-  .nav-logo-sub {
-    font-size: .45rem !important;
-    white-space: nowrap !important;
-    color: #1A1A1A !important;
-  }
-  .nav-logo, .nav-logo:visited {
-    text-decoration: none !important;
-    color: inherit !important;
-  }
-
-  /* GET THE APP button - compact, never wraps */
-  .nav-cta {
-    padding: 8px 14px !important;
-    font-size: .68rem !important;
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-    border-radius: 100px !important;
-  }
-
-  /* Hero - stack vertically, badge always visible */
-  .hero {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 90px 20px 60px !important;
-  }
-  .hero-badge {
-    display: inline-flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    margin-bottom: 20px !important;
-  }
-  .hero-left {
-    max-width: 100% !important;
-    width: 100% !important;
-    align-items: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .hero-right {
-    margin-top: 40px !important;
-    padding-top: 0 !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-  .hero-logo-centre { display: none !important; }
-
-}
 </style>
 </head>
 <body>
@@ -1474,12 +1383,12 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
   <div class="marquee-track">
     <div class="mq-item">Smart Reminders</div><div class="mq-item">Birthday Tracking</div>
     <div class="mq-item">Wedding Countdowns</div><div class="mq-item">Sports Fixtures</div>
-    <div class="mq-item">RSVP Management</div><div class="mq-item">HR Milestones</div>
+    <div class="mq-item">RSVP Management</div><div class="mq-item">Work & Milestones</div>
     <div class="mq-item">Family Events</div><div class="mq-item">Push Notifications</div>
     <div class="mq-item">Shared Calendars</div><div class="mq-item">Cross-Platform Sync</div><div class="mq-item">Multilingual Chat</div><div class="mq-item">Auto-Translation</div>
     <div class="mq-item">Smart Reminders</div><div class="mq-item">Birthday Tracking</div>
     <div class="mq-item">Wedding Countdowns</div><div class="mq-item">Sports Fixtures</div>
-    <div class="mq-item">RSVP Management</div><div class="mq-item">HR Milestones</div>
+    <div class="mq-item">RSVP Management</div><div class="mq-item">Work & Milestones</div>
     <div class="mq-item">Family Events</div><div class="mq-item">Push Notifications</div>
     <div class="mq-item">Shared Calendars</div><div class="mq-item">Cross-Platform Sync</div><div class="mq-item">Multilingual Chat</div><div class="mq-item">Auto-Translation</div>
   </div>
@@ -1514,7 +1423,7 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
     <div class="feat-card reveal d1"><span class="feat-icon">🌏</span><div class="feat-name">Multi-Country Calendars</div><p class="feat-desc">Select up to 3 country calendars at once. Each includes public holidays, religious events, cultural celebrations and national observances. Toggle between them instantly at the bottom of your screen — perfect for ex-pats.</p></div>
     <div class="feat-card reveal d1"><span class="feat-icon">💬</span><div class="feat-name">Two-Way Auto-Translation</div><p class="feat-desc">You type in your language. They type in theirs. Every message is automatically translated both ways in real time — in event chats and the standalone messaging portal.</p></div>
     <div class="feat-card reveal d2"><span class="feat-icon">🗣️</span><div class="feat-name">Your Language, Your Way</div><p class="feat-desc">Select your country's home language automatically, or choose your own. Every part of the app — reminders, labels, notifications — switches to your chosen language instantly.</p></div>
-    <div class="feat-card reveal d2"><span class="feat-icon">🏆</span><div class="feat-name">HR & Milestones</div><p class="feat-desc">Work anniversaries, reviews, award ceremonies — keep your team feeling remembered and valued.</p></div>
+    <div class="feat-card reveal d2"><span class="feat-icon">🏆</span><div class="feat-name">Work & Milestones</div><p class="feat-desc">Manage your entire work life in one place — meetings, deadlines, project milestones, schedules, work anniversaries, performance reviews and award ceremonies. Tomorrow's a BIG DAY keeps your professional life as organised as your personal one. Never miss an important work event again.</p></div>
     <div class="feat-card reveal d1"><span class="feat-icon">📋</span><div class="feat-name">Gift Registry</div><p class="feat-desc">Event hosts can log a gift registry directly into the invite — perfect for birthdays, baby showers and milestone celebrations. As guests purchase gifts, they are automatically removed from the registry so no gift is ever doubled up. Simple, smart and stress-free for everyone.</p></div>
     <div class="feat-card reveal" style="grid-column:1/-1;background:var(--yellow);border-top:2px solid var(--black);">
       <span class="feat-icon">🎁</span>
@@ -1769,7 +1678,7 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
     <div class="ev-tile big reveal"><div class="ev-tile-glow"></div><div class="ev-emoji">🎂</div><div class="ev-name">Birthdays & Anniversaries</div><div class="ev-desc">Never forget the people who matter most. Get reminded with plenty of time to celebrate properly.</div></div>
     <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">💍</div><div class="ev-name">Weddings & Celebrations</div><div class="ev-desc">Countdowns, RSVP tracking and guest reminders in one place.</div></div>
     <div class="ev-tile reveal d2"><div class="ev-tile-glow"></div><div class="ev-emoji">⚽</div><div class="ev-name">Sports & Fixtures</div><div class="ev-desc">Full season schedule in your pocket. Coaches push notifications to the whole squad — kit colour, venue, travel details and more.</div></div>
-    <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">🏢</div><div class="ev-name">Work & HR Milestones</div><div class="ev-desc">Anniversaries, reviews and recognition — automated and always on time.</div></div>
+    <div class="ev-tile reveal d1"><div class="ev-tile-glow"></div><div class="ev-emoji">🏢</div><div class="ev-name">Work & Milestones</div><div class="ev-desc">Meetings, deadlines, anniversaries, reviews and recognition — automated and always on time.</div></div>
     <div class="ev-tile reveal d2"><div class="ev-tile-glow"></div><div class="ev-emoji">🎓</div><div class="ev-name">Graduations & Events</div><div class="ev-desc">The moments worth planning for, tracked with care.</div></div>
   </div>
 </section>
@@ -1781,7 +1690,7 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
   <div class="testi-grid">
     <div class="testi-card reveal"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">I used to forget my own mother's birthday every other year. Now I get a reminder three days out, one day out, and on the morning. Genuinely life-changing.</p><div class="testi-author">Sarah M. — Sydney, Australia</div></div>
     <div class="testi-card reveal d1"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">We run a local football club and the fixtures feature alone is worth every cent. Parents always know where to be and when. No more group chat chaos.</p><div class="testi-author">Dave R. — Club Secretary</div></div>
-    <div class="testi-card reveal d2"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">As an HR manager, work anniversaries used to slip through constantly. Now our team feel genuinely celebrated. The morale improvement has been noticeable.</p><div class="testi-author">Priya K. — HR Manager</div></div>
+    <div class="testi-card reveal d2"><div class="testi-mark">"</div><div class="testi-stars">★★★★★</div><p class="testi-text">As a people manager, work anniversaries and deadlines used to slip through constantly. Now our team feel genuinely celebrated. The morale improvement has been noticeable.</p><div class="testi-author">Priya K. — People Manager</div></div>
   </div>
 </section>
 
@@ -1813,7 +1722,7 @@ body.light-mode .nav-links a:hover { color: var(--yellow) !important; }
         <li>Advanced smart reminders</li>
         <li>Invites & RSVP tracking</li>
         <li>Sports fixtures module</li>
-        <li>HR milestone tools</li>
+        <li>Work &amp; milestone tools</li>
         <li>Web app access</li>
       </ul>
       <a href="https://Tomorrows-a-BIG-DAY.replit.app" target="_blank" class="pbtn pbtn-yellow">Start Annual Plan</a>
@@ -2020,9 +1929,3 @@ setInterval(function(){ goSlide((currentSlide+1) % totalSlides); }, 3500);
 </script>
 </body>
 </html>
-
-
-  
-
-
- 
