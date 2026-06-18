@@ -22,12 +22,28 @@ import androidx.core.app.NotificationCompat
 
 /**
  * VolumePanicService — background foreground service that detects 5 rapid
- * volume-key presses (up OR down) within 4 seconds and triggers the SOS flow.
+ * volume-key presses within 2 seconds AND at least 2 direction changes
+ * (e.g. UP → DOWN → UP) before triggering the SOS flow.
  *
  * Detection strategy:
  *   Listens for android.media.VOLUME_CHANGED_ACTION broadcasts.
  *   This fires for EVERY physical volume button press — including presses at
  *   the min/max boundary where the volume value doesn't actually change.
+ *
+ *   IMPORTANT — direction-change guard (primary false-positive fix):
+ *   Normal volume adjustment is 5+ presses ALL in the same direction.
+ *   We require at least 2 direction reversals (UP→DOWN counts as 1,
+ *   DOWN→UP counts as another) before triggering. This means:
+ *     • UP×5              → 0 changes → NO trigger ✅
+ *     • DOWN×5            → 0 changes → NO trigger ✅
+ *     • UP×3 + DOWN×2     → 1 change  → NO trigger ✅
+ *     • UP×2+DOWN×1+UP×2  → 2 changes → TRIGGER    ✅
+ *   The deliberate panic gesture is: tap up, tap down, tap up (≥5 total).
+ *
+ *   IMPORTANT — hold-button false-positive prevention:
+ *   Android fires VOLUME_CHANGED_ACTION repeatedly while the button is held
+ *   (auto-repeat at ~150 ms intervals). MIN_GAP_MS = 250 ms filters these out.
+ *   Genuine rapid deliberate taps (one tap ≈ 300 ms apart) pass through.
  *
  * On trigger:
  *   1. Vibrates: 200ms · 100ms gap · 200ms · 100ms gap · 400ms
@@ -43,18 +59,35 @@ class VolumePanicService : Service() {
         private const val CHANNEL_ID     = "sos_guard"
         private const val NOTIF_ID       = 9001
         private const val PRESSES_NEEDED = 5
-        private const val WINDOW_MS      = 4_000L
+        // 5 deliberate rapid taps must land within 2 s.
+        private const val WINDOW_MS      = 2_000L
+        // Minimum gap between two counted presses — filters out hold-button
+        // auto-repeat (~150 ms) while accepting genuine rapid taps (~300 ms).
+        private const val MIN_GAP_MS     = 250L
+        // Minimum direction changes required in the window.
+        // Prevents normal volume adjustment (all UP or all DOWN) from triggering.
+        private const val MIN_DIR_CHANGES = 2
         private const val TAG            = "VolumePanic"
     }
 
-    private val pressTimestamps = ArrayDeque<Long>()
+    private val pressTimestamps  = ArrayDeque<Long>()
+    private val pressDirections  = ArrayDeque<Int>()   // 1 = up, -1 = down
+    private var lastPressTime    = 0L
+    private var lastKnownDir     = 0   // carried forward for boundary presses
     private val mainHandler = Handler(Looper.getMainLooper())
 
     private val volumeChangedReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action != "android.media.VOLUME_CHANGED_ACTION") return
-            // Post to main looper so pressTimestamps is always touched on one thread.
-            mainHandler.post { recordPress() }
+            val newVol  = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_VALUE", -1)
+            val prevVol = intent.getIntExtra("android.media.EXTRA_PREV_VOLUME_STREAM_VALUE", -1)
+            // Determine direction; boundary presses (at min/max) carry the last known dir.
+            val rawDir = when {
+                newVol > prevVol -> 1
+                newVol < prevVol -> -1
+                else             -> 0   // at boundary — will use lastKnownDir
+            }
+            mainHandler.post { recordPress(rawDir) }
         }
     }
 
@@ -94,20 +127,46 @@ class VolumePanicService : Service() {
 
     // ── Press counting ──────────────────────────────────────────────────────
 
-    private fun recordPress() {
+    private fun recordPress(rawDir: Int) {
         val now = System.currentTimeMillis()
-        pressTimestamps.addLast(now)
-        Log.d(TAG, "recordPress — total=${pressTimestamps.size}")
 
+        // Drop hold-button auto-repeat events.
+        if (now - lastPressTime < MIN_GAP_MS) return
+        lastPressTime = now
+
+        // Resolve effective direction — boundary press inherits last known direction.
+        val effectiveDir = if (rawDir != 0) { lastKnownDir = rawDir; rawDir } else lastKnownDir
+        if (effectiveDir == 0) return   // no direction info yet (very first press), skip
+
+        pressTimestamps.addLast(now)
+        pressDirections.addLast(effectiveDir)
+        Log.d(TAG, "recordPress dir=$effectiveDir — counted=${pressTimestamps.size}")
+
+        // Evict presses that fell outside the rolling window.
         while (pressTimestamps.isNotEmpty() && now - pressTimestamps.first() > WINDOW_MS) {
             pressTimestamps.removeFirst()
+            pressDirections.removeFirst()
         }
 
-        if (pressTimestamps.size >= PRESSES_NEEDED) {
+        if (pressTimestamps.size < PRESSES_NEEDED) return
+
+        // Count direction reversals in the window.
+        var dirChanges = 0
+        var prev = pressDirections.first()
+        for (d in pressDirections.drop(1)) {
+            if (d != prev) { dirChanges++; prev = d }
+        }
+
+        Log.d(TAG, "recordPress — presses=${pressTimestamps.size} dirChanges=$dirChanges")
+
+        if (dirChanges >= MIN_DIR_CHANGES) {
             pressTimestamps.clear()
+            pressDirections.clear()
+            lastPressTime = 0L
             Log.d(TAG, "recordPress — TRIGGER PANIC")
             triggerPanic()
         }
+        // If not enough direction changes, let the window slide — don't clear.
     }
 
     // ── Panic trigger ───────────────────────────────────────────────────────
@@ -116,7 +175,6 @@ class VolumePanicService : Service() {
         vibrate()
 
         // Send a package-local broadcast so only our app receives it.
-        // This replaces the deprecated LocalBroadcastManager.
         val intent = Intent(ACTION_PANIC_TRIGGERED).apply {
             setPackage(packageName)
         }
@@ -166,8 +224,8 @@ class VolumePanicService : Service() {
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("SOS guard active")
-            .setContentText("Press volume up or down 5\u00d7 to trigger an emergency alert")
-            .setSmallIcon(android.R.drawable.ic_dialog_alert)
+            .setContentText("Press volume up + down rapidly 5\u00d7 to trigger an emergency alert")
+            .setSmallIcon(R.drawable.ic_sos_shield)
             .setContentIntent(tapIntent)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_MIN)
