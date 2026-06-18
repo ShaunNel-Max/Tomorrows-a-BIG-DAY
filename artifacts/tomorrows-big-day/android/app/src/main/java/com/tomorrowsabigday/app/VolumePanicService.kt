@@ -21,24 +21,22 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 
 /**
- * VolumePanicService — background foreground service that detects 5 rapid
- * volume-key presses within 2 seconds AND at least 2 direction changes
- * (e.g. UP → DOWN → UP) before triggering the SOS flow.
+ * VolumePanicService — background foreground service that detects the EXACT
+ * 5-press SOS sequence ↑↑↓↓↑ (Up Up Down Down Up) within 2 seconds.
  *
  * Detection strategy:
  *   Listens for android.media.VOLUME_CHANGED_ACTION broadcasts.
  *   This fires for EVERY physical volume button press — including presses at
  *   the min/max boundary where the volume value doesn't actually change.
  *
- *   IMPORTANT — direction-change guard (primary false-positive fix):
- *   Normal volume adjustment is 5+ presses ALL in the same direction.
- *   We require at least 2 direction reversals (UP→DOWN counts as 1,
- *   DOWN→UP counts as another) before triggering. This means:
- *     • UP×5              → 0 changes → NO trigger ✅
- *     • DOWN×5            → 0 changes → NO trigger ✅
- *     • UP×3 + DOWN×2     → 1 change  → NO trigger ✅
- *     • UP×2+DOWN×1+UP×2  → 2 changes → TRIGGER    ✅
- *   The deliberate panic gesture is: tap up, tap down, tap up (≥5 total).
+ *   EXACT SEQUENCE MATCH (primary false-positive guard):
+ *   The last 5 recorded press directions must be exactly [↑, ↑, ↓, ↓, ↑]
+ *   i.e. [1, 1, -1, -1, 1].  Any other combination — including normal
+ *   volume adjustment (all UP or all DOWN) — does NOT trigger:
+ *     • ↑↑↑↑↑  → NO trigger ✅
+ *     • ↓↓↓↓↓  → NO trigger ✅
+ *     • ↑↓↑↓↑  → NO trigger ✅  (old alternating pattern — also rejected)
+ *     • ↑↑↓↓↑  → TRIGGER     ✅  (the intentional panic gesture)
  *
  *   IMPORTANT — hold-button false-positive prevention:
  *   Android fires VOLUME_CHANGED_ACTION repeatedly while the button is held
@@ -59,14 +57,14 @@ class VolumePanicService : Service() {
         private const val CHANNEL_ID     = "sos_guard"
         private const val NOTIF_ID       = 9001
         private const val PRESSES_NEEDED = 5
-        // 5 deliberate rapid taps must land within 2 s.
+        // All 5 presses must land within this rolling window.
         private const val WINDOW_MS      = 2_000L
         // Minimum gap between two counted presses — filters out hold-button
         // auto-repeat (~150 ms) while accepting genuine rapid taps (~300 ms).
         private const val MIN_GAP_MS     = 250L
-        // Minimum direction changes required in the window.
-        // Prevents normal volume adjustment (all UP or all DOWN) from triggering.
-        private const val MIN_DIR_CHANGES = 2
+        // The exact direction sequence that triggers SOS: ↑↑↓↓↑
+        // 1 = volume-up, -1 = volume-down.
+        private val SOS_SEQUENCE         = listOf(1, 1, -1, -1, 1)
         private const val TAG            = "VolumePanic"
     }
 
@@ -150,23 +148,20 @@ class VolumePanicService : Service() {
 
         if (pressTimestamps.size < PRESSES_NEEDED) return
 
-        // Count direction reversals in the window.
-        var dirChanges = 0
-        var prev = pressDirections.first()
-        for (d in pressDirections.drop(1)) {
-            if (d != prev) { dirChanges++; prev = d }
-        }
+        // Check whether the last 5 presses match the exact ↑↑↓↓↑ sequence.
+        // takeLast() handles the case where the deque has grown beyond 5 entries
+        // (presses accumulate until the oldest falls outside WINDOW_MS).
+        val lastFive = pressDirections.toList().takeLast(PRESSES_NEEDED)
+        Log.d(TAG, "recordPress — presses=${pressTimestamps.size} lastFive=$lastFive")
 
-        Log.d(TAG, "recordPress — presses=${pressTimestamps.size} dirChanges=$dirChanges")
-
-        if (dirChanges >= MIN_DIR_CHANGES) {
+        if (lastFive == SOS_SEQUENCE) {
             pressTimestamps.clear()
             pressDirections.clear()
             lastPressTime = 0L
-            Log.d(TAG, "recordPress — TRIGGER PANIC")
+            Log.d(TAG, "recordPress — TRIGGER PANIC ↑↑↓↓↑ matched")
             triggerPanic()
         }
-        // If not enough direction changes, let the window slide — don't clear.
+        // Sequence not matched yet — let the window slide and keep accumulating.
     }
 
     // ── Panic trigger ───────────────────────────────────────────────────────
@@ -224,7 +219,7 @@ class VolumePanicService : Service() {
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("SOS guard active")
-            .setContentText("Press volume up + down rapidly 5\u00d7 to trigger an emergency alert")
+            .setContentText("SOS: press Up Up Down Down Up (5 presses) to trigger emergency alert")
             .setSmallIcon(R.drawable.ic_sos_shield)
             .setContentIntent(tapIntent)
             .setOngoing(true)
